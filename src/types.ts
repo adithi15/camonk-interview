@@ -8,4 +8,5 @@ export interface Blog {
   content: string;
 }
 
-export type NewBlog = O Standardize omit<Blog, 'id'>;
+// Correct syntax for NewBlog
+export type NewBlog = Omit<Blog, 'id'>;
