@@ -1,0 +1,24 @@
+import { Blog, NewBlog } from "../types";
+
+const BASE_URL = "http://localhost:3001";
+
+export const getBlogs = async (): Promise<Blog[]> => {
+  const res = await fetch(`${BASE_URL}/blogs`);
+  if (!res.ok) throw new Error("Failed to fetch blogs");
+  return res.json();
+};
+
+export const getBlogById = async (id: number): Promise<Blog> => {
+  const res = await fetch(`${BASE_URL}/blogs/${id}`);
+  if (!res.ok) throw new Error("Blog not found");
+  return res.json();
+};
+
+export const createBlog = async (blog: NewBlog): Promise<Blog> => {
+  const res = await fetch(`${BASE_URL}/blogs`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ ...blog, date: new Date().toISOString() }),
+  });
+  return res.json();
+};
