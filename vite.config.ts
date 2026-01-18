@@ -4,7 +4,7 @@ import path from "path";
 
 export default defineConfig({
   plugins: [react()],
-  base: '/camonk-interview/'
+  base: '/camonk-interview/',
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
